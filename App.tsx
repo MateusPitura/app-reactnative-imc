@@ -9,23 +9,25 @@ import Historico from './Telas/Historico';
 const tabs = createBottomTabNavigator();
 
 export default function(){ 
-  <NavigationContainer>
-    <tabs.Navigator>
-      <tabs.Screen
-        name='Sobre'
-        component={Sobre}
-        options={{title:'Sobre'}}
-      />
-      <tabs.Screen
-        name='Calculadora'
-        componente={Calculadora}
-        options={{title:'Calculadora'}}
-      />
-      <tabs.Screen
-        name='Historico'
-        componente={Historico}
-        options={{title:'Historico'}}
-      />
-    </tabs.Navigator>
-  </NavigationContainer>
+  return(
+    <NavigationContainer>
+      <tabs.Navigator initialRouteName='Calculadora'>
+        <tabs.Screen
+          name='Sobre'
+          component={Sobre}
+          options={{title:'Sobre'}}
+        />
+        <tabs.Screen
+          name='Calculadora'
+          component={Calculadora}
+          options={{title:'Calculadora'}}
+        />
+        <tabs.Screen
+          name='Historico'
+          component={Historico}
+          options={{title:'Historico'}}
+        />
+      </tabs.Navigator>
+    </NavigationContainer>
+  );
 }; 
