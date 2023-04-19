@@ -1,33 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native'; 
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Sobre from './Telas/Sobre';
-import Calculadora from './Telas/Calculadora';
-import Historico from './Telas/Historico';
-
-const tabs = createBottomTabNavigator();
+import Tabs from './navigation/tabs';
 
 export default function(){ 
   return(
     <NavigationContainer>
-      <tabs.Navigator initialRouteName='Calculadora'>
-        <tabs.Screen
-          name='Sobre'
-          component={Sobre}
-          options={{title:'Sobre'}}
-        />
-        <tabs.Screen
-          name='Calculadora'
-          component={Calculadora}
-          options={{title:'Calculadora'}}
-        />
-        <tabs.Screen
-          name='Historico'
-          component={Historico}
-          options={{title:'Historico'}}
-        />
-      </tabs.Navigator>
+      <Tabs/>
     </NavigationContainer>
   );
 }; 
