@@ -4,9 +4,9 @@ import ScreenStyle from '../style/screen'
 
 export default function(){
     return(
-        <SafeAreaView style={{backgroundColor:'#DFE2ED'}}>
+        <SafeAreaView style={ScreenStyle.screenLayout}>
             <ScrollView>
-                <View style={ScreenStyle.screenLayout}>
+                <View style={ScreenStyle.viewLayout}>
                     <Text style={ScreenStyle.screenAlert}>
                         Conteúdo gerado pelo ChatGPT
                     </Text>

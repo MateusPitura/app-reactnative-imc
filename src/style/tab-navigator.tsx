@@ -22,9 +22,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    tabIcon:{
-        color: '#2854F1',
-    },
     tabButton:{
         top: -30, 
         justifyContent: 'center',

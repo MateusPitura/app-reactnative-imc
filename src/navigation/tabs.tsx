@@ -47,7 +47,8 @@ export default function(){
                             SOBRE
                         </Text>
                     </View>
-                )
+                ),
+                headerShown: false
             }}
         />
         <Tab.Screen
