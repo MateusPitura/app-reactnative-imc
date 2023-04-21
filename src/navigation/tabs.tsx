@@ -42,8 +42,8 @@ export default function(){
             options={{
                 tabBarIcon: ({focused}) => (
                     <View style={TabStyle.tabDiv}>
-                        <IconInformacoes fill={focused?'#E32F45':'#748C94'} width={25} height={25}/>
-                        <Text style={[TabStyle.tabText, {color: focused?'#E32F45':'#748C94'}]}>
+                        <IconInformacoes fill={focused?'#2854F1':'#748C94'} width={25} height={25}/>
+                        <Text style={[TabStyle.tabText, focused && TabStyle.colorFocused]}>
                             SOBRE
                         </Text>
                     </View>
@@ -70,8 +70,8 @@ export default function(){
             options={{
                 tabBarIcon: ({focused}) => (
                     <View style={TabStyle.tabDiv}>
-                        <IconEstatisticas fill={focused?'#E32F45':'#748C94'} width={25} height={25}/>
-                        <Text style={[TabStyle.tabText, {color: focused?'#E32F45':'#748C94'}]}>
+                        <IconEstatisticas fill={focused?'#2854F1':'#748C94'} width={25} height={25}/>
+                        <Text style={[TabStyle.tabText, focused && TabStyle.colorFocused]}>
                             HISTÓRICO
                         </Text>
                     </View>

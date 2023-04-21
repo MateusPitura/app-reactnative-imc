@@ -6,21 +6,24 @@ export default StyleSheet.create({
         bottom: 25,
         left: 20,
         right: 20,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#fff',
         borderRadius: 15,
         height: 90,
     },
     tabText:{
+        top: 5,
         fontSize: 12,
+        color: '#748C94',
+    },
+    colorFocused:{
+        color: '#2854F1',
     },
     tabDiv:{
         alignItems: 'center',
         justifyContent: 'center',
-        top: 5,
     },
-    tabIcon:{ //not used
-        width: 24,
-        height: 24,
+    tabIcon:{
+        color: '#2854F1',
     },
     tabButton:{
         top: -30, 
@@ -29,7 +32,7 @@ export default StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 35,
-        backgroundColor: '#e32f45',
+        backgroundColor: '#2854F1',
     },
     itenShadow:{
         shadowColor: '#7F5DF0',
