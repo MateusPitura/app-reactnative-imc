@@ -25,5 +25,23 @@ export default StyleSheet.create({
         fontSize: 20,
         marginBottom: 15,
         marginTop: 15,
+        paddingLeft: 15,
+    },
+    checkboxLayout:{
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    screenTouchable:{
+        backgroundColor: '#2854F1',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+        padding: 15,
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    touchableText:{
+        color: '#fff',
+        fontSize: 16,
     }
 })
