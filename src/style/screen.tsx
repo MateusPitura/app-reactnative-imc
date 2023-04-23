@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
     screenLayout:{
+        flex: 1,
         backgroundColor:'#DFE2ED',
     },
     viewLayout:{

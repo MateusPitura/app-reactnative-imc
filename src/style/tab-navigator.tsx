@@ -23,13 +23,20 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     tabButton:{
-        top: -30, 
         justifyContent: 'center',
         alignItems: 'center',
         width: 70,
         height: 70,
         borderRadius: 35,
         backgroundColor: '#2854F1',
+    },
+    highlightBottom:{
+        top: -30, 
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 70,
+        height: 70,
+        borderRadius: 35,
     },
     itenShadow:{
         shadowColor: '#7F5DF0',

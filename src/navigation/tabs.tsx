@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native'
+import {View, Text, TouchableHighlight} from 'react-native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
 import Sobre from '../screens/Sobre';
@@ -16,14 +16,14 @@ const Tab = createBottomTabNavigator();
 
 const TabBarButton = ({children, onPress}: any) => {
     return(
-        <TouchableOpacity
-            style={TabStyle.itenShadow}
+        <TouchableHighlight
+            style={[TabStyle.highlightBottom, TabStyle.itenShadow]}
             onPress={onPress}
         >
             <View style={TabStyle.tabButton}>
                 {children}
             </View>
-        </TouchableOpacity>
+        </TouchableHighlight>
     )
 }
 
@@ -33,7 +33,7 @@ export default function(){
         initialRouteName='Calculadora'
         screenOptions={{
             tabBarShowLabel: false,
-            tabBarStyle: [TabStyle.tabBox, TabStyle.itenShadow]
+            tabBarStyle: [TabStyle.tabBox, TabStyle.itenShadow],
         }}
     >
         <Tab.Screen
@@ -62,7 +62,8 @@ export default function(){
                 ),
                 tabBarButton: (props) => (
                     <TabBarButton {...props}/>
-                )
+                ),
+                headerShown: false
             }}
         />
         <Tab.Screen

@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
-import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text} from 'react-native';
+import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
+import Resultado from './Resultado';
 
 export default function(){
     
     const [peso, setPeso] = useState("");
     const [altura, setAltura] = useState("")
+    const [showModal, setShowModal] = useState(false);
+
+    const mudarVisibilidade = () => {
+        setShowModal(!showModal);
+    }
 
     return(
         <SafeAreaView style={ScreenStyle.screenLayout}>
@@ -25,6 +31,8 @@ export default function(){
                         returnKeyType="next"
                         inputMode="numeric"
                         maxLength={6}
+                        onSubmitEditing={()=>{this.secondTextInput.focus()}}
+                        blurOnSubmit={false}
                     />
                     <Text style={ScreenStyle.screenText}>
                         Informe sua altura em metros
@@ -37,6 +45,7 @@ export default function(){
                         cursorColor='#2854F1'
                         inputMode="numeric"
                         maxLength={4}
+                        ref={(input)=>{this.secondTextInput = input}}
                     />
                     <View style={ScreenStyle.checkboxLayout}>
                         <BouncyCheckbox 
@@ -57,7 +66,7 @@ export default function(){
                         />
                     </View>
                     <TouchableHighlight
-                        onPress={()=>{setPeso("20")}}
+                        onPress={()=>{mudarVisibilidade()}}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
                         underlayColor="#1C3C9D"
                     >
@@ -65,6 +74,7 @@ export default function(){
                             CALCULAR IMC
                         </Text>
                     </TouchableHighlight>
+                    <Resultado visible={showModal}/>
                 </View>
             </ScrollView>
         </SafeAreaView>
