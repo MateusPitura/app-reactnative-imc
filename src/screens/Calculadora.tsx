@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal} from 'react-native';
+import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal, Alert} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
@@ -66,7 +66,9 @@ export default function(){
                         />
                     </View>
                     <TouchableHighlight
-                        onPress={()=>{mudarVisibilidade()}}
+                        onPress={()=>{
+                            mudarVisibilidade();
+                        }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
                         underlayColor="#1C3C9D"
                     >

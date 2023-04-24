@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import {SafeAreaView, ScrollView, TouchableHighlight, View, Text, Modal} from 'react-native';
+import {SafeAreaView, ScrollView, TouchableHighlight, View, Text, Modal, Alert} from 'react-native';
 import StyleModal from '../style/modal';
 import ScreenStyle from '../style/screen'
 import TabStyle from '../style/tab-navigator'
 
 export default function(props: any){
 
-    //const [showModal, setShowModal] = useState(props.visible);
+    const [showModal, setShowModal] = useState(props.visible)
 
     return(
         <Modal
-            visible={props.visible}
+            visible={showModal}
             transparent={true}
             animationType='slide'
         >
@@ -24,7 +24,9 @@ export default function(props: any){
                             <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5{'\n'}</Text>
                             <Text style={StyleModal.resultadoText}>Você precisa ganhar 8.5 kilos{'\n'}</Text>
                             <TouchableHighlight
-                                //onPress={}
+                                onPress={()=>{
+                                    props.visible=false
+                                }}
                                 style={[ScreenStyle.screenTouchable, TabStyle.itenShadow, StyleModal.buttonDisplay]}
                                 underlayColor="#1C3C9D"
                             >
