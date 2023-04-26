@@ -81,28 +81,29 @@ export default function(){
                         transparent={true}
                         animationType='slide'
                     >
-                        <View style={StyleModal.background}>
-                            <SafeAreaView>
+                        {/* <View style={StyleModal.background}> */}
+                            <SafeAreaView style={StyleModal.displayView}>
                                 <ScrollView style={StyleModal.displayScroll}>
                                     <View style={StyleModal.displayText}>
                                         <Text style={StyleModal.titleText}>Resultado{'\n'}</Text>
                                         <Text style={StyleModal.resultadoValue}>17.5{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoText}>Você está abaixo do peso{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre 18 e 20.5 Sua faixa de peso ideal é entre 18 e 20.5{'\n'}</Text>
                                         <Text style={StyleModal.resultadoText}>Você precisa ganhar 8.5 kilos{'\n'}</Text>
+                                    </View>
+                                    <View style={StyleModal.layoutTouchable}>
                                         <TouchableHighlight
                                             onPress={()=>{
                                                 mudarVisibilidade();
                                             }}
-                                            style={[ScreenStyle.screenTouchable, TabStyle.itenShadow, StyleModal.buttonDisplay]}
+                                            style={[StyleModal.screenTouchable]} //, TabStyle.itenShadow
                                             underlayColor="#1C3C9D"
                                         >
-                                            <Text style={ScreenStyle.touchableText}>OK</Text>
+                                            <Text style={StyleModal.touchableText}>OK</Text>
                                         </TouchableHighlight>
                                     </View>
                                 </ScrollView>
                             </SafeAreaView>
-                        </View>
+                        {/* </View> */}
                     </Modal>
                 </View>
             </ScrollView>

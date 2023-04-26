@@ -1,7 +1,12 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
+    displayView:{
+        flex: 1,
+        backgroundColor: 'rgba(223, 226, 237, 0.80)',
+    },
     displayScroll:{
+        flex: 1,
         borderRadius: 5,
         marginHorizontal: 30,
         marginVertical: 60,
@@ -9,6 +14,7 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
     },
     displayText:{
+        flex: 1,
         alignItems: 'center'
     },
     background:{
@@ -25,7 +31,21 @@ export default StyleSheet.create({
     resultadoText:{
         fontSize: 20,
     },
-    buttonDisplay:{
-        justifyContent: 'flex-end' //não colocou em baixo
+    screenTouchable:{
+        backgroundColor: '#2854F1',
+        borderRadius: 5,
+        padding: 15,
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    layoutTouchable:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        backgroundColor: '#000'
+    },
+    touchableText:{
+        color: '#fff',
+        fontSize: 16,
     }
 })
