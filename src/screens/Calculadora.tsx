@@ -3,7 +3,7 @@ import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Mod
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
-import Resultado from './Resultado';
+import StyleModal from '../style/modal';
 
 export default function(){
     
@@ -76,7 +76,34 @@ export default function(){
                             CALCULAR IMC
                         </Text>
                     </TouchableHighlight>
-                    <Resultado visible={showModal}/>
+                    <Modal
+                        visible={showModal}
+                        transparent={true}
+                        animationType='slide'
+                    >
+                        <View style={StyleModal.background}>
+                            <SafeAreaView>
+                                <ScrollView style={StyleModal.displayScroll}>
+                                    <View style={StyleModal.displayText}>
+                                        <Text style={StyleModal.titleText}>Resultado{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoValue}>17.5{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoText}>Você está abaixo do peso{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5Sua faixa de peso ideal é entre 18 e 20.5{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoText}>Você precisa ganhar 8.5 kilos{'\n'}</Text>
+                                        <TouchableHighlight
+                                            onPress={()=>{
+                                                mudarVisibilidade();
+                                            }}
+                                            style={[ScreenStyle.screenTouchable, TabStyle.itenShadow, StyleModal.buttonDisplay]}
+                                            underlayColor="#1C3C9D"
+                                        >
+                                            <Text style={ScreenStyle.touchableText}>OK</Text>
+                                        </TouchableHighlight>
+                                    </View>
+                                </ScrollView>
+                            </SafeAreaView>
+                        </View>
+                    </Modal>
                 </View>
             </ScrollView>
         </SafeAreaView>

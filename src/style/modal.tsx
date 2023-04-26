@@ -1,9 +1,6 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
-    viewLayout:{
-        flex: 1,
-    },
     displayScroll:{
         borderRadius: 5,
         marginHorizontal: 30,
