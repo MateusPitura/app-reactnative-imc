@@ -11,11 +11,12 @@ export default StyleSheet.create({
         marginHorizontal: 30,
         marginVertical: 60,
         padding: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '#00f',
     },
     displayText:{
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#0f0'
     },
     background:{
         flex:1,
@@ -41,8 +42,9 @@ export default StyleSheet.create({
     layoutTouchable:{
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-end',
-        backgroundColor: '#000'
+        //justifyContent: 'flex-end',
+        backgroundColor: '#000',
+        position: 'absolute', left: 0, right: 0, bottom: 0, //insight interessante
     },
     touchableText:{
         color: '#fff',
