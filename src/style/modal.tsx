@@ -16,7 +16,7 @@ export default StyleSheet.create({
     displayText:{
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#0f0'
+        backgroundColor: '#0f0',
     },
     background:{
         flex:1,
@@ -42,12 +42,12 @@ export default StyleSheet.create({
     layoutTouchable:{
         flex: 1,
         alignItems: 'center',
-        //justifyContent: 'flex-end',
+        //justifyContent: 'flex-start',
         backgroundColor: '#000',
-        position: 'absolute', left: 0, right: 0, bottom: 0, //insight interessante
+        position: 'absolute', left: 0, right: 0, bottom: 0//insight interessante
     },
     touchableText:{
         color: '#fff',
         fontSize: 16,
-    }
+    },
 })
