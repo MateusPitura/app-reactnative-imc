@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
     displayView:{
         flex: 1,
-        backgroundColor: 'rgba(223, 226, 237, 0.80)',
+        backgroundColor: 'rgba(223, 226, 237, 0.9)',
     },
     displayScroll:{
         flex: 1,
@@ -11,12 +11,14 @@ export default StyleSheet.create({
         marginHorizontal: 30,
         marginVertical: 60,
         padding: 20,
-        backgroundColor: '#00f',
+        backgroundColor: '#fff',
     },
     displayText:{
         flex: 1,
+        backgroundColor: '#fff',
+    },
+    scrollContent:{
         alignItems: 'center',
-        backgroundColor: '#0f0',
     },
     background:{
         flex:1,
@@ -31,6 +33,7 @@ export default StyleSheet.create({
     },
     resultadoText:{
         fontSize: 20,
+        textAlign: 'center',
     },
     screenTouchable:{
         backgroundColor: '#2854F1',
@@ -38,13 +41,12 @@ export default StyleSheet.create({
         padding: 15,
         marginTop: 20,
         marginBottom: 20,
+        alignItems: 'center',
     },
     layoutTouchable:{
-        flex: 1,
-        alignItems: 'center',
-        //justifyContent: 'flex-start',
-        backgroundColor: '#000',
-        position: 'absolute', left: 0, right: 0, bottom: 0//insight interessante
+        alignItems: 'stretch',
+        justifyContent: 'flex-end',
+        backgroundColor: '#fff',
     },
     touchableText:{
         color: '#fff',
