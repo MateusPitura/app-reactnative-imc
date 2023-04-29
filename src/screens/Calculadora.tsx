@@ -9,10 +9,18 @@ export default function(){
     
     const [peso, setPeso] = useState("");
     const [altura, setAltura] = useState("")
+    const [imc, setImc] = useState("");
     const [showModal, setShowModal] = useState(false);
 
     const mudarVisibilidade = () => {
         setShowModal(!showModal);
+    }
+
+    const calcularImc = () => {
+        const valuePeso = parseFloat(peso);
+        const valueAltura = parseFloat(altura);
+        const valueImc = (valuePeso/(valueAltura*valueAltura));
+        setImc(valueImc.toFixed(2));
     }
 
     return(
@@ -67,6 +75,7 @@ export default function(){
                     </View>
                     <TouchableHighlight
                         onPress={()=>{
+                            calcularImc();
                             mudarVisibilidade();
                         }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
@@ -86,7 +95,7 @@ export default function(){
                                 <ScrollView style={StyleModal.displayText}>
                                     <View style={[StyleModal.scrollContent]}>
                                         <Text style={StyleModal.titleText}>Resultado{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoValue}>17.5{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoValue}>{imc}{'\n'}</Text>
                                         <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre 18 e 20.5{'\n'}</Text>
                                         <Text style={StyleModal.resultadoText}>Você precisa ganhar 8.5 kilos{'\n'}</Text>
                                     </View>
