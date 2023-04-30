@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal, Alert} from 'react-native';
+import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal, Alert, RefreshControl} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
@@ -9,18 +9,37 @@ export default function(){
     
     const [peso, setPeso] = useState("");
     const [altura, setAltura] = useState("")
-    const [imc, setImc] = useState("");
+    const [imc, setImc] = useState(NaN);
     const [showModal, setShowModal] = useState(false);
-
-    const mudarVisibilidade = () => {
-        setShowModal(!showModal);
-    }
+    const [pesoMinimo, setPesoMinimo] = useState(NaN);
+    const [pesoMaximo, setPesoMaximo] = useState(NaN);
+    const [pesoDiferenca, setPesoDiferenca] = useState("");
 
     const calcularImc = () => {
         const valuePeso = parseFloat(peso);
         const valueAltura = parseFloat(altura);
-        const valueImc = (valuePeso/(valueAltura*valueAltura));
-        setImc(valueImc.toFixed(2));
+        setImc(valuePeso/(valueAltura*valueAltura));
+    }
+
+    const definirLimitesPesos = () => {
+        const valueAltura = parseFloat(altura);
+        setPesoMinimo(18.5*(valueAltura*valueAltura));                                                                                                                                                                                                          
+        setPesoMaximo(24.9*(valueAltura*valueAltura));
+    }
+
+    const definirDiferencaPeso = () => {
+        const valuePeso = parseFloat(peso);
+        if(imc<18.5){
+            setPesoDiferenca("Você precisa ganhar " + (pesoMinimo-valuePeso).toFixed(2) + " kg");
+        } else if(imc<24.9){
+            setPesoDiferenca("Você está no peso ideal");
+        } else{
+            setPesoDiferenca("Você precisa perder " + (valuePeso-pesoMaximo).toFixed(2) + " kg");
+        }
+    }
+
+    const mudarVisibilidade = () => {
+        setShowModal(!showModal);
     }
 
     return(
@@ -28,7 +47,7 @@ export default function(){
             <ScrollView>
                 <View style={ScreenStyle.viewLayout}>
                     <Text style={ScreenStyle.screenText}>
-                        Informe seu peso em kilogramas
+                        Informe seu peso em quilogramas
                     </Text>
                     <TextInput
                         style={ScreenStyle.screenInput}
@@ -40,7 +59,7 @@ export default function(){
                         inputMode="numeric"
                         maxLength={6}
                         onSubmitEditing={()=>{this.secondTextInput.focus()}}
-                        blurOnSubmit={false}
+                        //blurOnSubmit={false}
                     />
                     <Text style={ScreenStyle.screenText}>
                         Informe sua altura em metros
@@ -76,6 +95,12 @@ export default function(){
                     <TouchableHighlight
                         onPress={()=>{
                             calcularImc();
+                            if(isNaN(imc)){
+                                Alert.alert("Insira os valores");
+                                return;
+                            }
+                            definirDiferencaPeso();
+                            definirLimitesPesos();
                             mudarVisibilidade();
                         }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
@@ -95,9 +120,9 @@ export default function(){
                                 <ScrollView style={StyleModal.displayText}>
                                     <View style={[StyleModal.scrollContent]}>
                                         <Text style={StyleModal.titleText}>Resultado{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoValue}>{imc}{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre 18 e 20.5{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoText}>Você precisa ganhar 8.5 kilos{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoValue}>{imc.toFixed(2)}{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre {pesoMinimo.toFixed(2)} kg e {pesoMaximo.toFixed(2)} kg{'\n'}</Text>
+                                        <Text style={StyleModal.resultadoText}>{pesoDiferenca}{'\n'}</Text>
                                     </View>
                                 </ScrollView>
                                 <View style={StyleModal.layoutTouchable}>
