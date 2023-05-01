@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal, Alert, RefreshControl} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
@@ -15,19 +15,19 @@ export default function(){
     const [pesoMaximo, setPesoMaximo] = useState(NaN);
     const [pesoDiferenca, setPesoDiferenca] = useState("");
 
-    const calcularImc = () => {
+    const calcularImc = useCallback(() => {
         const valuePeso = parseFloat(peso);
         const valueAltura = parseFloat(altura);
         setImc(valuePeso/(valueAltura*valueAltura));
-    }
+    }, [peso, altura]);
 
-    const definirLimitesPesos = () => {
+    const definirLimitesPesos = useCallback(() => {
         const valueAltura = parseFloat(altura);
         setPesoMinimo(18.5*(valueAltura*valueAltura));                                                                                                                                                                                                          
         setPesoMaximo(24.9*(valueAltura*valueAltura));
-    }
+    }, [altura]);
 
-    const definirDiferencaPeso = () => {
+    const definirDiferencaPeso = useCallback(() => {
         const valuePeso = parseFloat(peso);
         if(imc<18.5){
             setPesoDiferenca("Você precisa ganhar " + (pesoMinimo-valuePeso).toFixed(2) + " kg");
@@ -36,7 +36,7 @@ export default function(){
         } else{
             setPesoDiferenca("Você precisa perder " + (valuePeso-pesoMaximo).toFixed(2) + " kg");
         }
-    }
+    }, [imc]);
 
     const mudarVisibilidade = () => {
         setShowModal(!showModal);
@@ -59,7 +59,7 @@ export default function(){
                         inputMode="numeric"
                         maxLength={6}
                         onSubmitEditing={()=>{this.secondTextInput.focus()}}
-                        //blurOnSubmit={false}
+                        blurOnSubmit={false}
                     />
                     <Text style={ScreenStyle.screenText}>
                         Informe sua altura em metros
@@ -95,12 +95,12 @@ export default function(){
                     <TouchableHighlight
                         onPress={()=>{
                             calcularImc();
-                            if(isNaN(imc)){
-                                Alert.alert("Insira os valores");
-                                return;
-                            }
-                            definirDiferencaPeso();
+                            // if(isNaN(imc)){
+                            //     Alert.alert("Insira os valores");
+                            //     return;
+                            // }
                             definirLimitesPesos();
+                            definirDiferencaPeso();
                             mudarVisibilidade();
                         }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
