@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal, Alert, RefreshControl} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
@@ -40,7 +40,22 @@ export default function(){
 
     const mudarVisibilidade = () => {
         setShowModal(!showModal);
-    }
+    };
+
+    const handlePress = useCallback(() => {
+        calcularImc();
+        // if(isNaN(imc)){
+        //     Alert.alert("Insira os valores");
+        //     return;
+        // }
+        definirLimitesPesos();
+        definirDiferencaPeso();
+        mudarVisibilidade();
+    }, [calcularImc, definirLimitesPesos, definirDiferencaPeso, mudarVisibilidade]);
+
+    const effect = useEffect(() => {
+        handlePress();
+    }, [handlePress]);
 
     return(
         <SafeAreaView style={ScreenStyle.screenLayout}>
@@ -94,14 +109,15 @@ export default function(){
                     </View>
                     <TouchableHighlight
                         onPress={()=>{
-                            calcularImc();
-                            // if(isNaN(imc)){
-                            //     Alert.alert("Insira os valores");
-                            //     return;
-                            // }
-                            definirLimitesPesos();
-                            definirDiferencaPeso();
-                            mudarVisibilidade();
+                            // calcularImc();
+                            // // if(isNaN(imc)){
+                            // //     Alert.alert("Insira os valores");
+                            // //     return;
+                            // // }
+                            // definirLimitesPesos();
+                            // definirDiferencaPeso();
+                            // mudarVisibilidade();
+                            //effect;
                         }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
                         underlayColor="#1C3C9D"
