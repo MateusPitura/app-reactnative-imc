@@ -41,21 +41,10 @@ export default function(){
     const mudarVisibilidade = () => {
         setShowModal(!showModal);
     };
-
-    const handlePress = useCallback(() => {
-        calcularImc();
-        // if(isNaN(imc)){
-        //     Alert.alert("Insira os valores");
-        //     return;
-        // }
-        definirLimitesPesos();
-        definirDiferencaPeso();
-        mudarVisibilidade();
-    }, [calcularImc, definirLimitesPesos, definirDiferencaPeso, mudarVisibilidade]);
-
-    const effect = useEffect(() => {
-        handlePress();
-    }, [handlePress]);
+    
+    useEffect(
+        ()=>definirDiferencaPeso()
+    )
 
     return(
         <SafeAreaView style={ScreenStyle.screenLayout}>
@@ -109,15 +98,14 @@ export default function(){
                     </View>
                     <TouchableHighlight
                         onPress={()=>{
-                            // calcularImc();
-                            // // if(isNaN(imc)){
-                            // //     Alert.alert("Insira os valores");
-                            // //     return;
-                            // // }
-                            // definirLimitesPesos();
-                            // definirDiferencaPeso();
-                            // mudarVisibilidade();
-                            //effect;
+                            calcularImc();
+                            // if(isNaN(imc)){
+                            //     Alert.alert("Insira os valores");
+                            //     return;
+                            // }
+                            definirLimitesPesos();
+                            definirDiferencaPeso();
+                            mudarVisibilidade();
                         }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
                         underlayColor="#1C3C9D"
