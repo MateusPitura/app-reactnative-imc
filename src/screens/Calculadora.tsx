@@ -3,7 +3,7 @@ import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Mod
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
-import StyleModal from '../style/modal';
+import Resultado from './Resultado'
 
 export default function(){
     
@@ -14,6 +14,7 @@ export default function(){
     const [pesoMinimo, setPesoMinimo] = useState(NaN);
     const [pesoMaximo, setPesoMaximo] = useState(NaN);
     const [pesoDiferenca, setPesoDiferenca] = useState("");
+    const [textoPesoIsVisible, setTextoPesoIsVisible] = useState("none");
 
     const calcularImc = useCallback(() => {
         const valuePeso = parseFloat(peso);
@@ -39,9 +40,16 @@ export default function(){
     }, [imc]);
 
     const mudarVisibilidade = () => {
+        const valuePeso = parseFloat(peso);
+        const valueAltura = parseFloat(altura);
+        if(isNaN(valuePeso) || isNaN(valueAltura)){
+            setTextoPesoIsVisible("flex");
+            return;
+        }
+        setTextoPesoIsVisible("none");
         setShowModal(!showModal);
     };
-    
+
     useEffect(
         ()=>definirDiferencaPeso()
     )
@@ -65,6 +73,7 @@ export default function(){
                         onSubmitEditing={()=>{this.secondTextInput.focus()}}
                         blurOnSubmit={false}
                     />
+                    <Text style={{display: textoPesoIsVisible}}>Preencha esse campo</Text>
                     <Text style={ScreenStyle.screenText}>
                         Informe sua altura em metros
                     </Text>
@@ -99,10 +108,6 @@ export default function(){
                     <TouchableHighlight
                         onPress={()=>{
                             calcularImc();
-                            // if(isNaN(imc)){
-                            //     Alert.alert("Insira os valores");
-                            //     return;
-                            // }
                             definirLimitesPesos();
                             definirDiferencaPeso();
                             mudarVisibilidade();
@@ -114,35 +119,14 @@ export default function(){
                             CALCULAR IMC
                         </Text>
                     </TouchableHighlight>
-                    <Modal
-                        visible={showModal}
-                        transparent={true}
-                        animationType='slide'
-                    >
-                        <SafeAreaView style={StyleModal.displayView}>
-                            <View style={StyleModal.displayScroll}>
-                                <ScrollView style={StyleModal.displayText}>
-                                    <View style={[StyleModal.scrollContent]}>
-                                        <Text style={StyleModal.titleText}>Resultado{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoValue}>{imc.toFixed(2)}{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre {pesoMinimo.toFixed(2)} kg e {pesoMaximo.toFixed(2)} kg{'\n'}</Text>
-                                        <Text style={StyleModal.resultadoText}>{pesoDiferenca}{'\n'}</Text>
-                                    </View>
-                                </ScrollView>
-                                <View style={StyleModal.layoutTouchable}>
-                                    <TouchableHighlight
-                                        onPress={()=>{
-                                            mudarVisibilidade();
-                                        }}
-                                        style={[StyleModal.screenTouchable, TabStyle.itenShadow]}
-                                        underlayColor="#1C3C9D"
-                                    >
-                                        <Text style={StyleModal.touchableText}>OK</Text>
-                                    </TouchableHighlight>
-                                </View>
-                            </View>
-                        </SafeAreaView>
-                    </Modal>
+                    <Resultado 
+                        visible={showModal} 
+                        change={setShowModal} 
+                        imc={imc} 
+                        pesoDiferenca={pesoDiferenca} 
+                        pesoMinimo={pesoMinimo} 
+                        pesoMaximo={pesoMaximo}
+                    />
                 </View>
             </ScrollView>
         </SafeAreaView>
