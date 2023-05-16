@@ -5,6 +5,9 @@ import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
 import Resultado from './Resultado'
 
+import Uuid from 'react-native-uuid'
+import Moment from 'moment';
+
 export default function(){
     
     const [peso, setPeso] = useState("");
@@ -38,6 +41,22 @@ export default function(){
             setPesoDiferenca("Você precisa perder " + (valuePeso-pesoMaximo).toFixed(2) + " kg");
         }
     }, [imc]);
+
+    const handleArmazenar = ()=>{
+
+        const id = Uuid.v4();
+        const date =  Moment().utcOffset('-03:00').format('DD/MM/YYYY');
+
+        const newData = {
+            id,
+            date,
+            peso,
+            imc,
+        }
+
+        console.log(newData);
+        
+    }
 
     const mudarVisibilidade = () => {
         const valuePeso = parseFloat(peso);
@@ -110,6 +129,7 @@ export default function(){
                             calcularImc();
                             definirLimitesPesos();
                             definirDiferencaPeso();
+                            handleArmazenar();
                             mudarVisibilidade();
                         }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
