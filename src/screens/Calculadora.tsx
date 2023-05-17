@@ -1,9 +1,11 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Modal, Alert, RefreshControl} from 'react-native';
+import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Alert} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
 import Resultado from './Resultado'
+
+import AsyncStorage from '@react-native-community/async-storage'
 
 import Uuid from 'react-native-uuid'
 import Moment from 'moment';
@@ -42,7 +44,7 @@ export default function(){
         }
     }, [imc]);
 
-    const handleArmazenar = ()=>{
+    const handleArmazenar = async ()=>{
 
         const id = Uuid.v4();
         const date =  Moment().utcOffset('-03:00').format('DD/MM/YYYY');
@@ -54,8 +56,8 @@ export default function(){
             imc,
         }
 
-        console.log(newData);
-        
+        await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(newData)); 
+        Alert.alert("sucesso");
     }
 
     const mudarVisibilidade = () => {
