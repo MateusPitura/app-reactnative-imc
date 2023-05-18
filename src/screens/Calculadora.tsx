@@ -6,7 +6,6 @@ import TabStyle from '../style/tab-navigator'
 import Resultado from './Resultado'
 
 import AsyncStorage from '@react-native-community/async-storage'
-
 import Uuid from 'react-native-uuid'
 import Moment from 'moment';
 
@@ -45,19 +44,22 @@ export default function(){
     }, [imc]);
 
     const handleArmazenar = async ()=>{
+        try{
+            const id = Uuid.v4();
+            const date =  Moment().utcOffset('-03:00').format('DD/MM/YYYY');
 
-        const id = Uuid.v4();
-        const date =  Moment().utcOffset('-03:00').format('DD/MM/YYYY');
+            const newData = {
+                id,
+                date,
+                peso,
+                imc
+            }
 
-        const newData = {
-            id,
-            date,
-            peso,
-            imc,
+            await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(newData)); 
+            Alert.alert("sucesso");
+        } catch(error){
+            Alert.alert("erro");
         }
-
-        await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(newData)); 
-        Alert.alert("sucesso");
     }
 
     const mudarVisibilidade = () => {
