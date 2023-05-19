@@ -55,7 +55,11 @@ export default function(){
                 imc
             }
 
-            await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(newData)); 
+            const response = await AsyncStorage.getItem("@meuimc:calculos");
+            const previousData = JSON.parse(response);
+            const data = [...previousData, newData]
+
+            await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(data)); 
             Alert.alert("sucesso");
         } catch(error){
             Alert.alert("erro");

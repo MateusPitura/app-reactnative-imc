@@ -8,7 +8,8 @@ export default function(){
 
     const handleFetchData = async () => {
         const response = await AsyncStorage.getItem("@meuimc:calculos");
-        setData(JSON.parse(response));
+        const data = JSON.parse(response);
+        setData(data);
     }
 
     return(
