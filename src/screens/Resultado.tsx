@@ -15,7 +15,7 @@ export default function(props: any){
                     <ScrollView style={StyleModal.displayText}>
                         <View style={[StyleModal.scrollContent]}>
                             <Text style={StyleModal.titleText}>Resultado{'\n'}</Text>
-                            <Text style={StyleModal.resultadoValue}>{props.imc.toFixed(2)}{'\n'}</Text>
+                            <Text style={StyleModal.resultadoValue}>{props.imc}{'\n'}</Text>
                             <Text style={StyleModal.resultadoText}>Sua faixa de peso ideal é entre {props.pesoMinimo.toFixed(2)} kg e {props.pesoMaximo.toFixed(2)} kg{'\n'}</Text>
                             <Text style={StyleModal.resultadoText}>{props.pesoDiferenca}{'\n'}</Text>
                         </View>
