@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Alert, Button} from 'react-native';
+import {TouchableHighlight, SafeAreaView, ScrollView, TextInput, View, Text, Button} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ScreenStyle from '../style/screen';
 import TabStyle from '../style/tab-navigator'
@@ -47,10 +47,7 @@ export default function(){
         try{
             await AsyncStorage.removeItem("@meuimc:calculos");
             const response = await AsyncStorage.getItem("@meuimc:calculos");
-            console.log(response);
-            Alert.alert("sucesso");
         } catch(error){
-            Alert.alert("erro");
             console.log(error);
         }
     }
@@ -70,9 +67,7 @@ export default function(){
             const previousData = response? JSON.parse(response) : [];
             const data = [...previousData, ...newData];
             await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(data)); 
-            Alert.alert("sucesso");
         } catch(error){
-            Alert.alert("erro");
             console.log(error);
         }
     }

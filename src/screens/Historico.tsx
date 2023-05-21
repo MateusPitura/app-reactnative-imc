@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import {FlatList, View, Text, Button} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function(){
 
     const [data, setData] = useState([]);
 
-    const handleFetchData = async () => { //Está atualizando loucamente
+    const handleFetchData = async () => {
         const response = await AsyncStorage.getItem("@meuimc:calculos");
-        console.log("update");
         const data = response? JSON.parse(response) : [];
         setData(data);
     }
@@ -21,7 +21,7 @@ export default function(){
         setData(data);
     }
 
-    useEffect(()=>{handleFetchData()}, [data]);
+    useFocusEffect(useCallback(()=>{handleFetchData()}, []))
 
     return(
         <View>
@@ -30,11 +30,11 @@ export default function(){
                 keyExtractor={item=>item.id}
                 renderItem={({item})=>
                 <View
-                style={{
-                    backgroundColor: "#f00",
-                    margin: 20,
-                    padding: 20,
-                }}
+                    style={{
+                        backgroundColor: "#f00",
+                        margin: 20,
+                        padding: 20,
+                    }}
                 >
                     <Text>Data: {item.date}</Text>
                     <Text>IMC: {item.imc}</Text>
