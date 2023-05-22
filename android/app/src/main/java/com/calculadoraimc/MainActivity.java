@@ -1,4 +1,4 @@
-package com.calculadoraimc;
+package com.app;
 
 import android.os.Bundle;
 
@@ -15,7 +15,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "CalculadoraIMC";
+    return "app";
   }
 
   /**

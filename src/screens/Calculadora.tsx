@@ -19,25 +19,21 @@ export default function(){
     const [pesoMaximo, setPesoMaximo] = useState(NaN);
     const [pesoDiferenca, setPesoDiferenca] = useState("");
     const [textoPesoIsVisible, setTextoPesoIsVisible] = useState("none");
+    const [incluirNoHistorico, setIncluirNoHistorico] = useState(false);
 
-    const calcularImc = useCallback(async () => {
-        console.log("teste1A");
+    const calcularImc = useCallback(() => {
         const valuePeso = parseFloat(peso);
         const valueAltura = parseFloat(altura);
         setImc(parseFloat((valuePeso/(valueAltura*valueAltura)).toFixed(2)));
-        console.log("teste1B");
     }, [peso, altura]);
 
     const definirLimitesPesos = useCallback(() => {
-        console.log("teste2A");
         const valueAltura = parseFloat(altura);
         setPesoMinimo((18.5*(valueAltura*valueAltura)));
         setPesoMaximo((24.9*(valueAltura*valueAltura)));
-        console.log("teste2B");
     }, [altura]);
 
     const definirDiferencaPeso = useCallback(() => {
-        console.log("teste3A");
         const valuePeso = parseFloat(peso);
         if(imc<18.5){
             setPesoDiferenca("Você precisa ganhar " + (pesoMinimo-valuePeso).toFixed(2) + " kg");
@@ -46,7 +42,6 @@ export default function(){
         } else{
             setPesoDiferenca("Você precisa perder " + (valuePeso-pesoMaximo).toFixed(2) + " kg");
         }
-        console.log("teste3B");
     }, [imc]);
 
     const apagar = async () => {
@@ -58,8 +53,16 @@ export default function(){
         }
     }
 
-    const handleArmazenar = async ()=>{
-        console.log("teste4A");
+    const handleArmazenar = useCallback(async ()=>{
+        const valuePeso = parseFloat(peso);
+        const valueAltura = parseFloat(altura);
+        if(isNaN(valuePeso) || isNaN(valueAltura)){
+            setTextoPesoIsVisible("flex");
+            return;
+        }
+        if(!incluirNoHistorico){
+            return;
+        }
         try{
             const id = Uuid.v4();
             const date =  Moment().utcOffset('-03:00').format('DD/MM/YYYY');
@@ -78,11 +81,9 @@ export default function(){
         } catch(error){
             console.log(error);
         }
-        console.log("teste4B");
-    }
+    }, [imc, peso, altura, incluirNoHistorico])
 
     const mudarVisibilidade = () => {
-        console.log("teste5A");
         const valuePeso = parseFloat(peso);
         const valueAltura = parseFloat(altura);
         if(isNaN(valuePeso) || isNaN(valueAltura)){
@@ -91,13 +92,13 @@ export default function(){
         }
         setTextoPesoIsVisible("none");
         setShowModal(!showModal);
-        console.log("teste5B");
     };
 
-    useEffect(
-        ()=>definirDiferencaPeso()
-    )
-
+    useEffect(()=>{
+        definirDiferencaPeso();
+        handleArmazenar();
+    }, [imc])
+    
     return(
         <SafeAreaView style={ScreenStyle.screenLayout}>
             <ScrollView>
@@ -146,15 +147,15 @@ export default function(){
                             innerIconStyle={{
                                 borderRadius: 5,
                             }}
-                            onPress={(isChecked: boolean) => {}} 
+                            onPress={(isChecked: boolean) => {setIncluirNoHistorico(isChecked)}} 
                         />
                     </View>
                     <TouchableHighlight
-                        onPress={async ()=>{
+                        onPress={()=>{
                             calcularImc();
                             definirLimitesPesos();
                             definirDiferencaPeso();
-                            await handleArmazenar();
+                            handleArmazenar();
                             mudarVisibilidade();
                         }}
                         style={[ScreenStyle.screenTouchable, TabStyle.itenShadow]}
