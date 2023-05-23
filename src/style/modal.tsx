@@ -20,10 +20,6 @@ export default StyleSheet.create({
     scrollContent:{
         alignItems: 'center',
     },
-    background:{
-        flex:1,
-        backgroundColor: 'rgba(223, 226, 237, 0.80)'
-    },
     titleText:{
         fontSize: 30,
     },

@@ -1,7 +1,11 @@
-import React, {useState, useEffect, useCallback} from 'react'
-import {FlatList, View, Text, Button} from 'react-native'
+import React, {useState, useCallback} from 'react'
+import {FlatList, View, Text, Button, TouchableHighlight} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useFocusEffect } from '@react-navigation/native';
+import StyleHistorico from '../style/historico';
+import Lixeira from '../assets/icons/bin.svg';
+import LinearGradient from "react-native-linear-gradient";
+import { Line } from 'react-native-svg';
 
 export default function(){
 
@@ -24,26 +28,38 @@ export default function(){
     useFocusEffect(useCallback(()=>{handleFetchData()}, []))
 
     return(
-        <View>
+        <View style={StyleHistorico.background}>
             <FlatList
                 data={data}
+                style={{paddingBottom: 200,}}
                 keyExtractor={item=>item.id}
                 renderItem={({item})=>
-                <View
+                <LinearGradient
+                    colors={['rgba(131,58,180,1)', 'rgba(253,29,29,1)', 'rgba(252,176,69,1)']}
                     style={{
-                        backgroundColor: "#f00",
                         margin: 20,
                         padding: 20,
+                        borderRadius: 10,
                     }}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
                 >
-                    <Text>Data: {item.date}</Text>
-                    <Text>IMC: {item.imc}</Text>
-                    <Text>Peso: {item.peso}</Text>
-                    <Button
-                        title="Lixo"
-                        onPress={()=>{excluir(item.id)}}
-                    />
-                </View>}
+                    <View style={StyleHistorico.cards}>
+                        <View style={StyleHistorico.informationSection}>
+                            <Text>Data: {item.date}</Text>
+                            <Text>IMC: {item.imc}</Text>
+                            <Text>Peso: {item.peso}</Text>
+                        </View>
+                        <View style={StyleHistorico.buttonSection}>
+                            <TouchableHighlight
+                                onPress={()=>{excluir(item.id)}}
+                            >
+                                <Lixeira fill={'#2E2E2E'} width={40} height={40}/>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+                </LinearGradient>
+                }
             />
         </View>
     )
