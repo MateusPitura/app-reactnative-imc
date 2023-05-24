@@ -5,7 +5,6 @@ import { useFocusEffect } from '@react-navigation/native';
 import StyleHistorico from '../style/historico';
 import Lixeira from '../assets/icons/bin.svg';
 import LinearGradient from "react-native-linear-gradient";
-import { Line } from 'react-native-svg';
 
 export default function(){
 
@@ -35,10 +34,16 @@ export default function(){
                 keyExtractor={item=>item.id}
                 renderItem={({item})=>
                 <LinearGradient
-                    colors={['rgba(131,58,180,1)', 'rgba(253,29,29,1)', 'rgba(252,176,69,1)']}
+                    colors=
+                    {
+                        (item.imc<18.5 || item.imc>24.9)
+                    ?
+                        ['rgba(253,29,29,1)', 'rgba(252,176,69,1)']
+                    :
+                        ['rgba(255,255,255,1)', 'rgba(0,0,0,0)']
+                    }
                     style={{
                         margin: 20,
-                        padding: 20,
                         borderRadius: 10,
                     }}
                     start={{ x: 0, y: 0 }}
@@ -46,9 +51,11 @@ export default function(){
                 >
                     <View style={StyleHistorico.cards}>
                         <View style={StyleHistorico.informationSection}>
-                            <Text>Data: {item.date}</Text>
-                            <Text>IMC: {item.imc}</Text>
-                            <Text>Peso: {item.peso}</Text>
+                            <Text style={StyleHistorico.informationText}>{item.date}</Text>
+                            <Text style={StyleHistorico.informationText}>{item.peso} kg</Text>
+                        </View>
+                        <View style={StyleHistorico.resultSection}>
+                            <Text style={StyleHistorico.resultText}>{item.imc}</Text>
                         </View>
                         <View style={StyleHistorico.buttonSection}>
                             <TouchableHighlight

@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
     cards:{
         backgroundColor: "#fff",
-        margin: 11,
+        margin: 3,
         padding: 20,
         borderRadius: 10,
         flexDirection: 'row',
@@ -17,10 +17,22 @@ export default StyleSheet.create({
         flex: 3,
         //backgroundColor: "#0f0",
     },
+    resultSection:{
+        flex: 3,
+        //backgroundColor: "#00f",
+        alignItems: 'flex-start',
+        justifyContent: 'center'
+    },
     buttonSection:{
         flex: 1,
         //backgroundColor: "#f00",
         alignItems: 'flex-end',
         justifyContent: 'center',
+    },
+    informationText:{
+        fontSize: 16,
+    },
+    resultText:{
+        fontSize: 30,
     }
 })
