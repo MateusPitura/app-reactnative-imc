@@ -34,5 +34,9 @@ export default StyleSheet.create({
     },
     resultText:{
         fontSize: 30,
+    },
+    gradient:{
+        margin: 20,
+        borderRadius: 10,
     }
 })

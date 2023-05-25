@@ -1,8 +1,9 @@
 import React, {useState, useCallback} from 'react'
-import {FlatList, View, Text, Button, TouchableHighlight} from 'react-native'
+import {FlatList, View, Text, ScrollView, TouchableHighlight} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useFocusEffect } from '@react-navigation/native';
 import StyleHistorico from '../style/historico';
+import StyleScreen from '../style/tab-navigator';
 import Lixeira from '../assets/icons/bin.svg';
 import LinearGradient from "react-native-linear-gradient";
 
@@ -27,7 +28,7 @@ export default function(){
     useFocusEffect(useCallback(()=>{handleFetchData()}, []))
 
     return(
-        <View style={StyleHistorico.background}>
+        <ScrollView style={StyleHistorico.background}>
             <FlatList
                 data={data}
                 style={{paddingBottom: 200,}}
@@ -40,12 +41,9 @@ export default function(){
                     ?
                         ['rgba(253,29,29,1)', 'rgba(252,176,69,1)']
                     :
-                        ['rgba(255,255,255,1)', 'rgba(0,0,0,0)']
+                        ['rgba(158,189,19,1)', 'rgba(0,133,82,1)']
                     }
-                    style={{
-                        margin: 20,
-                        borderRadius: 10,
-                    }}
+                    style={[StyleHistorico.gradient, StyleScreen.itenShadow]}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                 >
@@ -61,13 +59,13 @@ export default function(){
                             <TouchableHighlight
                                 onPress={()=>{excluir(item.id)}}
                             >
-                                <Lixeira fill={'#2E2E2E'} width={40} height={40}/>
+                                <Lixeira stroke={'#1C1C1C'} width={40} height={40}/>
                             </TouchableHighlight>
                         </View>
                     </View>
                 </LinearGradient>
                 }
             />
-        </View>
+        </ScrollView>
     )
 }
