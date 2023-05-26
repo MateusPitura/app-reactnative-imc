@@ -36,7 +36,12 @@ export default StyleSheet.create({
         fontSize: 30,
     },
     gradient:{
-        margin: 20,
+        marginHorizontal: 20,
+        marginVertical: 10,
         borderRadius: 10,
+    },
+    flatlist:{
+        marginTop: 5, 
+        paddingBottom: 200
     }
 })

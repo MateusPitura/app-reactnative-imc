@@ -76,7 +76,7 @@ export default function(){
 
             const response = await AsyncStorage.getItem("@meuimc:calculos");
             const previousData = response? JSON.parse(response) : [];
-            const data = [...previousData, ...newData];
+            const data = [...newData, ...previousData];
             await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(data)); 
         } catch(error){
             console.log(error);

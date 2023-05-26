@@ -28,10 +28,10 @@ export default function(){
     useFocusEffect(useCallback(()=>{handleFetchData()}, []))
 
     return(
-        <ScrollView style={StyleHistorico.background}>
+        <View style={StyleHistorico.background}>
             <FlatList
                 data={data}
-                style={{paddingBottom: 200,}}
+                contentContainerStyle={StyleHistorico.flatlist}
                 keyExtractor={item=>item.id}
                 renderItem={({item})=>
                 <LinearGradient
@@ -66,6 +66,6 @@ export default function(){
                 </LinearGradient>
                 }
             />
-        </ScrollView>
+        </View>
     )
 }
