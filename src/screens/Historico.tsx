@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react'
-import {FlatList, View, Text, ScrollView, TouchableHighlight} from 'react-native'
+import {FlatList, View, Text, TouchableWithoutFeedback, LayoutAnimation} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useFocusEffect } from '@react-navigation/native';
 import StyleHistorico from '../style/historico';
@@ -56,14 +56,19 @@ export default function(){
                             <Text style={StyleHistorico.resultText}>{item.imc}</Text>
                         </View>
                         <View style={StyleHistorico.buttonSection}>
-                            <TouchableHighlight
+                            <TouchableWithoutFeedback
                                 onPress={()=>{excluir(item.id)}}
                             >
-                                <Lixeira stroke={'#1C1C1C'} width={40} height={40}/>
-                            </TouchableHighlight>
+                                <Lixeira stroke={'#D3D3D3'} width={40} height={40}/>
+                            </TouchableWithoutFeedback>
                         </View>
                     </View>
                 </LinearGradient>
+                }
+                ListEmptyComponent={
+                    <View style={StyleHistorico.empytContainer}>
+                        <Text style={StyleHistorico.emptyText}>Seus resultados aparecerão aqui!</Text>
+                    </View>
                 }
             />
         </View>

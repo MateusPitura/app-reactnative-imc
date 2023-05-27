@@ -43,5 +43,15 @@ export default StyleSheet.create({
     flatlist:{
         marginTop: 5, 
         paddingBottom: 200
+    },
+    emptyText:{
+        fontSize: 20,
+        textAlign: 'center',
+    },
+    empytContainer:{
+        padding: 60,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
+
 })
