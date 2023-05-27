@@ -173,10 +173,6 @@ export default function(){
                         pesoMinimo={pesoMinimo} 
                         pesoMaximo={pesoMaximo}
                     />
-                    <Button
-                        title="Excluir"
-                        onPress={()=>apagar()}
-                    />
                 </View>
             </ScrollView>
         </SafeAreaView>

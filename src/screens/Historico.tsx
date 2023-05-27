@@ -23,7 +23,20 @@ export default function(){
         const data = previousData.filter((item: any) => item.id !== id);
         await AsyncStorage.setItem("@meuimc:calculos", JSON.stringify(data));
         setData(data);
+        LayoutAnimation.configureNext(layoutAnimConfig);
     }
+
+    const layoutAnimConfig = {
+        duration: 300,
+        update: {
+            type: LayoutAnimation.Types.easeInEaseOut, 
+        },
+        delete: {
+            duration: 100,
+            type: LayoutAnimation.Types.easeInEaseOut,
+            property: LayoutAnimation.Properties.opacity,
+        },
+    };
 
     useFocusEffect(useCallback(()=>{handleFetchData()}, []))
 

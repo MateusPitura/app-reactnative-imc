@@ -30,7 +30,7 @@ const TabBarButton = ({children, onPress}: any) => {
 export default function(){ 
   return(
     <Tab.Navigator 
-        initialRouteName='Historico'
+        initialRouteName='Calculadora'
         screenOptions={{
             tabBarShowLabel: false,
             tabBarStyle: [TabStyle.tabBox, TabStyle.itenShadow],
