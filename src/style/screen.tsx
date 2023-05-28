@@ -20,7 +20,6 @@ export default StyleSheet.create({
     },
     screenInput:{
         borderWidth: 1,
-        borderColor: '#D3D3D3',
         backgroundColor: '#fff',
         borderRadius: 5,
         fontSize: 20,
@@ -44,5 +43,12 @@ export default StyleSheet.create({
     touchableText:{
         color: '#fff',
         fontSize: 16,
-    }
+    },
+    viewIsVisible:{
+        marginBottom: 10,
+        marginTop: -10,
+    },
+    textIsVisible:{
+        color: 'red',
+    },
 })

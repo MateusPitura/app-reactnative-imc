@@ -19,6 +19,8 @@ export default function(){
     const [pesoMaximo, setPesoMaximo] = useState(NaN);
     const [pesoDiferenca, setPesoDiferenca] = useState("");
     const [textoPesoIsVisible, setTextoPesoIsVisible] = useState("none");
+    const [textoAlturaIsVisible, setTextoAlturaIsVisible] = useState("none");
+    const [textoAvisoAltura, setTextoAvisoAltura] = useState("none");
     const [incluirNoHistorico, setIncluirNoHistorico] = useState(false);
 
     const calcularImc = useCallback(() => {
@@ -56,8 +58,7 @@ export default function(){
     const handleArmazenar = useCallback(async ()=>{
         const valuePeso = parseFloat(peso);
         const valueAltura = parseFloat(altura);
-        if(isNaN(valuePeso) || isNaN(valueAltura)){
-            setTextoPesoIsVisible("flex");
+        if(isNaN(valuePeso) || isNaN(valueAltura) || valueAltura>3){
             return;
         }
         if(!incluirNoHistorico){
@@ -86,11 +87,23 @@ export default function(){
     const mudarVisibilidade = () => {
         const valuePeso = parseFloat(peso);
         const valueAltura = parseFloat(altura);
-        if(isNaN(valuePeso) || isNaN(valueAltura)){
+        setTextoAlturaIsVisible("none");
+        setTextoAvisoAltura("none");
+        if(isNaN(valuePeso)){
             setTextoPesoIsVisible("flex");
             return;
         }
         setTextoPesoIsVisible("none");
+        if(isNaN(valueAltura)){
+            setTextoAlturaIsVisible("flex");
+            return;
+        }
+        setTextoAlturaIsVisible("none");
+        if(valueAltura>3){
+            setTextoAvisoAltura("flex");
+            return;
+        }
+        setTextoAvisoAltura("none");
         setShowModal(!showModal);
     };
 
@@ -107,9 +120,11 @@ export default function(){
                         Informe seu peso em quilogramas
                     </Text>
                     <TextInput
-                        style={ScreenStyle.screenInput}
+                        style={[ScreenStyle.screenInput, {
+                            borderColor:(textoPesoIsVisible=="flex"?'red':'#D3D3D3')
+                        }]}
                         value={peso}
-                        onChangeText={text=>setPeso(text)}
+                        onChangeText={text=>setPeso(text.replace(',','.'))}
                         placeholder='63,5'
                         cursorColor='#2854F1'
                         returnKeyType="next"
@@ -118,20 +133,31 @@ export default function(){
                         onSubmitEditing={()=>{this.secondTextInput.focus()}}
                         blurOnSubmit={false}
                     />
-                    <Text style={{display: textoPesoIsVisible}}>Preencha esse campo</Text>
+                    <View style={[ScreenStyle.viewIsVisible, {display: textoPesoIsVisible}]}>
+                        <Text style={ScreenStyle.textIsVisible}>Preencha esse campo</Text>
+                    </View>
                     <Text style={ScreenStyle.screenText}>
                         Informe sua altura em metros
                     </Text>
                     <TextInput
-                        style={ScreenStyle.screenInput}
+                        style={[ScreenStyle.screenInput, {
+                            borderColor:(
+                                (textoAlturaIsVisible=='flex'||textoAvisoAltura=='flex')?'red':'#D3D3D3')
+                        }]}
                         value={altura}
-                        onChangeText={text=>setAltura(text)}
+                        onChangeText={text=>setAltura(text.replace(',','.'))}
                         placeholder='1,62'
                         cursorColor='#2854F1'
                         inputMode="numeric"
                         maxLength={4}
                         ref={(input)=>{this.secondTextInput = input}}
                     />
+                    <View style={[ScreenStyle.viewIsVisible, {display: textoAlturaIsVisible}]}>
+                        <Text style={ScreenStyle.textIsVisible}>Preencha esse campo</Text>
+                    </View>
+                    <View style={[ScreenStyle.viewIsVisible, {display: textoAvisoAltura}]}>
+                        <Text style={ScreenStyle.textIsVisible}>Coloque a altura em metros</Text>
+                    </View>
                     <View style={ScreenStyle.checkboxLayout}>
                         <BouncyCheckbox 
                             size={25}
