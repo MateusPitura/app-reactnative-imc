@@ -50,7 +50,7 @@ export default function(){
                 <LinearGradient
                     colors=
                     {
-                        (item.imc<18.5 || item.imc>24.9)
+                        (item.imc<18.5 || item.imc>=24.9)
                     ?
                         ['rgba(253,29,29,1)', 'rgba(252,176,69,1)']
                     :

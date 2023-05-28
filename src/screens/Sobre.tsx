@@ -15,7 +15,7 @@ export default function(){
                         {'\n\n'}
                         O IMC é calculado dividindo o peso da pessoa pela sua altura ao quadrado. O resultado é um número que indica se a pessoa está dentro do peso ideal, com sobrepeso ou obesidade, ou abaixo do peso adequado.
                         {'\n\n'}
-                        Os valores de referência do IMC variam de acordo com a idade e o sexo da pessoa, mas geralmente um IMC entre 18,5 e 24,9 é considerado saudável. Um IMC entre 25 e 29,9 indica sobrepeso e um IMC acima de 30 indica obesidade.
+                        Os valores de referência do IMC variam de acordo com a idade e o sexo da pessoa, mas geralmente um IMC entre 18.5 e 24.9 é considerado saudável. Um IMC entre 25 e 29.9 indica sobrepeso e um IMC acima de 30 indica obesidade.
                         {'\n\n'}
                         É importante ressaltar que o IMC é uma medida simples e fácil de calcular, mas não deve ser utilizada como única forma de avaliação da saúde de uma pessoa. Outros fatores, como a composição corporal, a distribuição de gordura no corpo e o nível de atividade física, devem ser considerados na avaliação do estado nutricional de uma pessoa.
                         {'\n\n'}
