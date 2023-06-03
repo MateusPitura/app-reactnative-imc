@@ -4,83 +4,52 @@
     <img src="https://github.com/MateusPitura/app-calculadora-imc/assets/119008106/5b61f70b-5422-41c2-939a-da55ce9f1f8d" alt="Tela do aplicativo com campos de peso e altura e um botão para calcular IMC" width="30%"> 
     <img src="https://github.com/MateusPitura/app-calculadora-imc/assets/119008106/d1e49307-2b2b-41b5-a25c-d1d99064a9ec" alt="Tela do aplicativo com resultado cálculo do IMC" width="30%"> 
     <img src="https://github.com/MateusPitura/app-calculadora-imc/assets/119008106/3f83f69a-43a3-4a00-8bfd-c5366dd86a1b" alt="Tela do aplicativo com histórico dos cálculos do IMC" width="30%"> 
-    </p>
-</h1> 
+  </p>
+</h1>
 
 <p> 
-  <img src="link do badge1" alt="Descrição do badge1"> 
-  <img src="link do badge2" alt="Descrição do badge2"> 
-  <img src="link do badge3" alt="Descrição do badge3"> 
+  <img src="https://img.shields.io/badge/Release-June%202023-green" alt="Badge da data de lançamento: Junho de 2023"> 
+  <img src="https://img.shields.io/badge/Version-0.1.0-blue" alt="Badge da versão do projeto: 0.1.0"> 
+  <img src="https://img.shields.io/badge/Status-Closed-brightgreen" alt="Badge do status: fechado"> 
+  <img src="https://img.shields.io/badge/OS-Only%20Android-red" alt="Badge do sistema operacional: apenas Android"> 
+  <img src="https://img.shields.io/github/stars/MateusPitura/app-calculadora-imc?style=social" alt="Badge indicando quantidade de estrelas no repositório">
 </p> 
 
- 
-
-> :nome_do_emoji1: Texto de aviso :nome_do_emoji1: 
-
- 
+> :checkered_flag: Este projeto está finalizado :checkered_flag: 
 
 ## Descrição 
 
- 
-
-Texto de descrição do projeto 
-
- 
+O Meu IMC é um aplicativo desenvolvido para ajudar as pessoas a calcular seu Índice de Massa Corporal (IMC) e fornecer informações sobre a faixa de peso ideal. Além disso, o aplicativo registra todas as medições em um histórico, permitindo que os usuários acompanhem seu progresso ao longo do tempo
 
 ## Índice 
 
- 
-
 - [Funcionalidades](#funcionalidades) 
-
 - [Como executar](#como-executar) 
-
 - [Tecnologias usadas](#tecnologias-usadas) 
-
 - [Autores](#autores) 
-
-   
 
 ## Funcionalidades 
 
+:1234: **Cálculo do IMC:** os usuários podem inserir sua altura e peso para obter seu IMC imediatamente 
  
-
- :nome_do_emoji2: **Título da funcionalidade1:** descrição da funcionalide1 
-
+:straight_ruler: **Faixa de Peso Ideal:** o aplicativo exibe a faixa de peso ideal com base no IMC calculado
  
+:chart_with_upwards_trend: **Histórico de Medição:** todas as medições de IMC são registradas no histórico do usuário, permitindo que ele visualize seu progresso ao longo do tempo
 
- :nome_do_emoji3: **Título da funcionalidade2:** descrição da funcionalide2 
-
- 
-
- :nome_do_emoji4: **Título da funcionalidade3:** descrição da funcionalide3 
-
- 
-
-<p align="center"> 
-
-  <img src="link do gif ou vídeo" alt="Descrição do gif ou vídeo" width="50%"> 
-
+<p align="center">
+  <img src="https://github.com/MateusPitura/app-calculadora-imc/assets/119008106/48e8cba9-279a-41a1-861d-d068355b09a5" alt="GIF mostrando as funcionalides do aplicativo" width="25%"> 
 </p> 
-
- 
 
 ## Como executar 
 
-  
-
-1. Descrição do `passo1` 
-
-2. Descrição do passo2 
-
-3. Descrição do passo3 
-
- 
+1. Baixe o APK
+2. Instale o aplicativo. Obs.: como o aplicativo não está na Play Store, ele indicará que o aplicativo pode ser perigoso 
 
 ## Tecnologias usadas 
- :heavy_check_mark: React Native CLI 9.5.1 
- :heavy_check_mark: Tecnologia2 
- :heavy_check_mark: Tecnologia3 
+ 
+:heavy_check_mark: React Native CLI
+ 
+:heavy_check_mark: Async Storage
 
 ## Autores 
 
