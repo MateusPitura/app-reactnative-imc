@@ -95,7 +95,7 @@ android {
 
     namespace "com.app"
     defaultConfig {
-        applicationId "com.app"
+        applicationId "com.cce5622"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
