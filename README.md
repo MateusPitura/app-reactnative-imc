@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Version-0.1.0-blue" alt="Badge da versão do projeto: 0.1.0"> 
   <img src="https://img.shields.io/badge/Status-Closed-brightgreen" alt="Badge do status: fechado"> 
   <img src="https://img.shields.io/badge/OS-Only%20Android-red" alt="Badge do sistema operacional: apenas Android"> 
-  <img src="https://img.shields.io/github/stars/MateusPitura/app-calculadora-imc?style=social" alt="Badge indicando quantidade de estrelas no repositório">
+  <img src="https://img.shields.io/github/stars/MateusPitura/app-reactnative-imc?style=social" alt="Badge indicando quantidade de estrelas no repositório">
 </p> 
 
 > :checkered_flag: Este projeto está finalizado :checkered_flag: 
