@@ -15,8 +15,6 @@
   <img src="https://img.shields.io/github/stars/MateusPitura/app-reactnative-imc?style=social" alt="Badge indicando quantidade de estrelas no repositório">
 </p> 
 
-> :checkered_flag: Este projeto está finalizado :checkered_flag: 
-
 ## Descrição 
 
 O Meu IMC é um aplicativo desenvolvido para ajudar as pessoas a calcular seu Índice de Massa Corporal (IMC) e fornecer informações sobre a faixa de peso ideal. Além disso, o aplicativo registra todas as medições em um histórico, permitindo que os usuários acompanhem seu progresso ao longo do tempo
